@@ -25,3 +25,25 @@ pip install -r requirements.txt
 ```bash
 echo "venv" >> .gitignore
 ```
+
+
+# Database structure
+## User table
+
+| type | name | description |
+|------|------|-------------|
+| int  | userid | user id |
+| int  | imageid | image id |
+| int  | like | like |
+| int  | dislike | dislike |
+
+## Image table
+
+| type | name | description |
+|------|------|-------------|
+| int  | imageid | image id |
+| char| url | image url |
+
+
+
+
