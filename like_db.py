@@ -12,16 +12,27 @@ class LikeDB:
         self.images = self.db.table('images')
 
 
-    def save(self):
-        with open(self.db_path, 'w') as f:
-            json.dump(self.db, f, indent=4)
-    
-    def all_likes(self):
+
+
+    def get_likes_dislike(self, image_id:str):
         """Counts all users likes
         returns
             all users likes
         """
-        pass
+        # Query the database for all images
+        # Count the number of likes
+        likes = 0
+        dislike = 0
+        for user in self.users:
+            if user[image_id]['like']:
+                likes += 1
+            else:
+                dislike += 1
+            
+        return likes, dislike
+
+ 
+        
         
     def all_dislikes(self):
         """Counts all users dislikes
@@ -56,7 +67,7 @@ class LikeDB:
 
   
     #Add a dislike to the database
-    def add_dislike(self, user_id:str)->dict:
+    def add_dislike(self, user_id:str,image_id)->dict:
         '''
         Add a dislike to the database
         args:
@@ -64,10 +75,20 @@ class LikeDB:
         returns:
             The number of likes and dislikes for the post
         '''
-        pass
+        if self.users.contains(doc_id=user_id):
+            user_doc = self.users.get(doc_id=user_id)
+            user_doc[image_id] = {'like': False, 'dislike': True}
+        else:
+            user_doc = {image_id: {'like': False, 'dislike': True}}
+        # Create user document
+     
+        user_doc = Document(user_doc, doc_id=user_id)
+        self.users.insert(user_doc)
 
 
 db = LikeDB('like_db.json')
 
 # db.add_like('user1', 'img1')
-db.add_like('3', 'img2')
+# db.add_like('3', 'img2')
+# db.add_dislike('4', 'img2')
+print(db.all_likes('img2'))
