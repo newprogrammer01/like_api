@@ -1,8 +1,9 @@
 # Import libraries
 from flask import Flask, request
+from like_db import LikeDB
 # Create an instance of Flask
 app = Flask(__name__)
-
+likeDB = LikeDB('like_db.json')
 @app.route("/")
 def home():
     return "Hello World!"
@@ -18,6 +19,7 @@ def addImage():
         image_id = data["image_id"]
         # Get the message id from data
         message_id = data["message_id"]
+        likeDB.add_image(image_id, message_id)
         print(f'Image id: {image_id} Message id: {message_id}')
 
     return {}
