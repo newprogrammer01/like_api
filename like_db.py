@@ -14,6 +14,17 @@ class LikeDB:
 
 
 
+    def add_image(self,image_id:str, message_id:str):
+        """Adds an image to the database
+        args:
+            image_id: The id of the image
+            message_id: The id of the message that the image is attached to
+        """
+        #Add the image to the database
+        image = Document({'image_id': image_id}, doc_id=message_id)
+        self.images.insert(image)
+
+
     def get_likes_dislike(self, image_id:str):
         """Counts all users likes
         returns
@@ -91,4 +102,4 @@ db = LikeDB('like_db.json')
 # db.add_like('user1', 'img1')
 # db.add_like('3', 'img2')
 # db.add_dislike('4', 'img2')
-print(db.all_likes('img2'))
+db.add_image('img1', 'msg1')
