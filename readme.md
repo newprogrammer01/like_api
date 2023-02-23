@@ -26,8 +26,16 @@ pip install -r requirements.txt
 echo "venv" >> .gitignore
 ```
 
+# Set environment variables
+
+## Telegram bot token
+
+```bash
+export TOKEN="your token"
+```
 
 # Database structure
+
 ## User table
 
 | type | name | description |
