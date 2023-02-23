@@ -97,9 +97,9 @@ class LikeDB:
         self.users.insert(user_doc)
 
 
-db = LikeDB('like_db.json')
+# db = LikeDB('like_db.json')
 
 # db.add_like('user1', 'img1')
 # db.add_like('3', 'img2')
 # db.add_dislike('4', 'img2')
-db.add_image('img1', 'msg1')
+# db.add_image('img1', 'msg1')
