@@ -1,6 +1,5 @@
 # Import libraries
-from flask import Flask
-
+from flask import Flask, request
 # Create an instance of Flask
 app = Flask(__name__)
 
@@ -8,6 +7,21 @@ app = Flask(__name__)
 def home():
     return "Hello World!"
 
+# End point for getting image
+@app.route("/api/addImage", methods=["POST"])
+def addImage():
+    # Get the image from the request
+    if request.method == "POST":
+        # Get json data from request
+        data = request.get_json(force=True)
+        # Get the image id from data
+        image_id = data["image_id"]
+        # Get the message id from data
+        message_id = data["message_id"]
+        print(f'Image id: {image_id} Message id: {message_id}')
+
+    return {}
+        
 
 # Run the app
 if __name__ == "__main__":
