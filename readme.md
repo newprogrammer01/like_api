@@ -52,6 +52,6 @@ export TOKEN="your token"
 | int  | imageid | image id |
 | char| url | image url |
 
+## Endpoints
 
-
-
+[endpoints](endpoints.md)
