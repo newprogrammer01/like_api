@@ -14,7 +14,7 @@ def addImage():
     # Get the image from the request
     if request.method == "POST":
         # Get json data from request
-        data = request.get_json(force=True)
+        data = request.get_json(force=True) 
         # Get the image id from data
         image_id = data["image_id"]
         # Get the message id from data
